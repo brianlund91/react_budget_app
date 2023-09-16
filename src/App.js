@@ -1,6 +1,7 @@
 import React from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 import Budget from './components/Budget';
 import Remaining from './components/Remaining';
