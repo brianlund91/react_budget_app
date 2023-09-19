@@ -9,8 +9,8 @@ const AllocationForm = (props) => {
     const [action, setAction] = useState('');
 
     const submitEvent = () => {
+        // console.log(`submitEvent, name: ${name}, cost: ${cost}, action: ${action}`);
 
-        console.log('in submitEvent, remaining:', remaining);
         if (cost > remaining) {
             alert("The value cannot exceed remaining funds  £"+remaining);
             setCost("");
@@ -21,17 +21,19 @@ const AllocationForm = (props) => {
             name: name,
             cost: parseInt(cost),
         };
-        if(action === "Reduce") {
+
+        if (action === "Reduce") {
             dispatch({
                 type: 'REDUCE_EXPENSE',
                 payload: expense,
             });
+
         } else {
-                dispatch({
-                    type: 'ADD_EXPENSE',
-                    payload: expense,
-                });
-            }
+            dispatch({
+                type: 'ADD_EXPENSE',
+                payload: expense,
+            });
+        }
     };
 
     return (

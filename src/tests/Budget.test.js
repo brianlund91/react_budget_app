@@ -5,8 +5,7 @@ import Budget from '../components/Budget';
 import { AppProvider } from '../context/AppContext';
 
 const getBudgetInputElement = () => {
-    // TODO: more reliable selector
-    return screen.getAllByRole('spinbutton')[0]; 
+    return screen.getByRole('spinbutton'); 
 }
 
 describe('Budget', () => {
@@ -40,7 +39,7 @@ describe('Budget', () => {
         );
 
         // TODO: more reliable selector
-        const budgetInput = screen.getAllByRole('spinbutton')[0];
+        const budgetInput = getBudgetInputElement();
         expect(budgetInput.value).toBe("2000");
 
         // fireEvent.change(budgetInput, {

@@ -29,7 +29,7 @@ const ExpenseItem = (props) => {
     };
 
     return (
-        <tr>
+        <tr data-testid={`expense-row-${props.name}`}>
             <td>{props.name}</td>
             <td>£{props.cost}</td>
             <td>
