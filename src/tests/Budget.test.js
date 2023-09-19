@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Budget from './components/Budget';
-import { AppProvider } from './context/AppContext';
+import Budget from '../components/Budget';
+import { AppProvider } from '../context/AppContext';
 
 const getBudgetInputElement = () => {
     // TODO: more reliable selector
