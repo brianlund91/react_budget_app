@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
+import { calculateTotalExpenses } from '../utils';
+
 const ExpenseTotal = () => {
     const { expenses } = useContext(AppContext);
-    const totalExpenses = expenses.reduce((total, expense) => {
-        return (total += expense.cost);
-    }, 0);
+    const totalExpenses = calculateTotalExpenses(expenses);
 
     return (
         <div className='alert alert-primary'>
@@ -12,4 +12,5 @@ const ExpenseTotal = () => {
         </div>
     );
 };
+
 export default ExpenseTotal;

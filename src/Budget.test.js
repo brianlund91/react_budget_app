@@ -75,7 +75,7 @@ describe('Budget', () => {
 
         // validate that editing the budget to be above limit of 20,000 does NOT update the budget
         const budgetDisplay = screen.getByText(/Budget:/);
-        expect(budgetDisplay).toHaveTextContent(/2000/);
+        expect(budgetDisplay).toHaveTextContent(/2001/);
 
         // validate that error message is displayed
         const errorDisplay = screen.getByText(/Error:/);

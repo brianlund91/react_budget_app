@@ -1,9 +1,9 @@
-import React, {useContext, useState } from 'react';
-import { AppContext } from '../context/AppContext';
+import React, { useState } from 'react';
+import { useAppState } from '../context/AppContext';
 import { calculateTotalExpenses } from '../utils';
 
 const Budget = () => {
-    const { budget, expenses } = useContext(AppContext);
+    const { budget, expenses, dispatch } = useAppState();
     const [newBudget, setNewBudget] = useState(budget);
     const [error, setError] = useState(null);
 
@@ -11,7 +11,6 @@ const Budget = () => {
         // console.log('in handleBudgetChange', event.target.value);
         const inputValue = event.target.value;
         const totalExpenses = calculateTotalExpenses(expenses);
-        console.log('totalExpenses:', totalExpenses);
 
         // validate input
         if (isNaN(inputValue) || inputValue < 0) {
@@ -27,8 +26,11 @@ const Budget = () => {
         }
         else {
             // valid input, clear the error and update the budget value
-            setError(null)
-            // TODO: update the budget value
+            setError(null);
+            dispatch({
+                type: 'SET_BUDGET',
+                payload: inputValue,
+            });
         }
 
         setNewBudget(inputValue)
