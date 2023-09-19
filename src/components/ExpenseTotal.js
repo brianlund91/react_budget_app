@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
-import { AppContext } from '../context/AppContext';
+import React from 'react';
+import { useAppState } from '../context/AppContext';
 import { calculateTotalExpenses } from '../utils';
 
 const ExpenseTotal = () => {
-    const { expenses } = useContext(AppContext);
+    const { expenses } = useAppState();
     const totalExpenses = calculateTotalExpenses(expenses);
 
     return (

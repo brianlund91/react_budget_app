@@ -92,7 +92,7 @@ const initialState = {
 };
 
 // 2. Creates the context this is the thing our components import and use to get the state
-export const AppContext = createContext();
+const AppContext = createContext();
 
 export const useAppState = () => {
     return useContext(AppContext);
@@ -104,6 +104,7 @@ export const AppProvider = (props) => {
     // 4. Sets up the app state. takes a reducer, and an initial state
     // Note: copying initialState so that the object does not get modified for subsequent test runs
     const [state, dispatch] = useReducer(AppReducer, { ...initialState } );
+    // console.log('state:', state);
     let remaining = 0;
 
     if (state.expenses) {

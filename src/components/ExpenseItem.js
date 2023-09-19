@@ -1,11 +1,10 @@
 import React from "react";
-import { useContext } from "react";
-import { AppContext } from "../context/AppContext";
+import {  useAppState } from "../context/AppContext";
 
 import { TiDelete } from 'react-icons/ti';
 
 const ExpenseItem = (props) => {
-    const { dispatch } = useContext(AppContext)
+    const { dispatch } = useAppState()
 
     const handleDelete = () => {
         console.log(`in ExpenseItem.handleDelete() for expense ${props.name}`);
