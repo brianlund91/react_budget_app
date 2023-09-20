@@ -4,7 +4,7 @@ import {  useAppState } from "../context/AppContext";
 import { TiDelete } from 'react-icons/ti';
 
 const ExpenseItem = (props) => {
-    const { dispatch } = useAppState();
+    const { currency, dispatch } = useAppState();
 
     const handleDelete = () => {
         console.log(`in ExpenseItem.handleDelete() for expense ${props.name}`);
@@ -42,7 +42,7 @@ const ExpenseItem = (props) => {
     return (
         <tr data-testid={`expense-row-${props.name}`}>
             <td>{props.name}</td>
-            <td>£{props.cost}</td>
+            <td>{currency}{props.cost}</td>
             <td>
                 <button onClick={increaseAllocation}>+</button>
             </td>

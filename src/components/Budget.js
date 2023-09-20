@@ -3,7 +3,7 @@ import { useAppState } from '../context/AppContext';
 import { calculateTotalExpenses } from '../utils';
 
 const Budget = () => {
-    const { budget, expenses, dispatch } = useAppState();
+    const { budget, expenses, currency, dispatch } = useAppState();
     const [newBudget, setNewBudget] = useState(budget);
     const [error, setError] = useState(null);
 
@@ -40,7 +40,7 @@ const Budget = () => {
     return(
         <div className='alert alert-secondary' data-testid='budget-box'>
             <span data-testid='budget-display'>
-                Budget: £{budget} 
+                Budget: {currency}{budget} 
             </span>
             <div>
                 Edit: <input 

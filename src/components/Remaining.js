@@ -2,7 +2,7 @@ import React from 'react';
 import { useAppState } from '../context/AppContext';
 
 const Remaining = () => {
-    const { expenses, budget } = useAppState();
+    const { expenses, budget, currency } = useAppState();
 
     const remainingBudget = budget - expenses.reduce(
         (total, expense) => {
@@ -16,7 +16,7 @@ const Remaining = () => {
 
     return (
         <div className={`alert ${alertType}`}>
-            Remaining Budget = £{remainingBudget}
+            Remaining Budget = {currency}{remainingBudget}
         </div>
     );
 };
