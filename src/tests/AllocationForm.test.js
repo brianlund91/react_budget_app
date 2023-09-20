@@ -22,6 +22,8 @@ describe('AllocationForm', () => {
         expect(allocationAmountInput).toHaveTextContent('');
     });
 
+    // TODO: test for empty input
+
     it('should alert if attempting to increase allocation above remaining budget', async () => {
         // some gross code to mock window.alert in a testing environment
         const originalAlert = window.alert;
