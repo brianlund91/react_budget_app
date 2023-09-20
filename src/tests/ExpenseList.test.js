@@ -21,9 +21,9 @@ describe('ExpenseList', () => {
         // implicit validation if no error is thrown looking for the updated budget value 
         screen.getByText('£310');
 
-        // just to be 100% sure, validate that the old finance budget allocation value no longer is displayed
+        // just to be 100% sure, validate that the old finance budget allocation value is not in the DOM
         const oldFinanceBudgetValue = screen.queryByText('£300');
-        expect(oldFinanceBudgetValue).toBe(null);
+        expect(oldFinanceBudgetValue).not.toBeInTheDocument();
     });
 
     it('should decrease budget allocation by 10 when the - button is clicked', async () => {
@@ -42,4 +42,20 @@ describe('ExpenseList', () => {
         // implicit validation if no error is thrown looking for the updated budget value 
         screen.getByText('£60');
     });
+
+    it('should remove budeget category from table when delete button is clicked', async () => {
+        render(
+            <AppProvider>
+                <ExpenseList/>
+            </AppProvider>
+        );
+
+        const humanResourcesRow = screen.getByTestId('expense-row-Human Resource');
+        expect(humanResourcesRow).toBeInTheDocument();
+        
+        const deleteButton = screen.getByRole('button', {name: 'Delete Human Resource'});
+        await userEvent.click(deleteButton);
+
+        expect(humanResourcesRow).not.toBeInTheDocument();
+    })
 });

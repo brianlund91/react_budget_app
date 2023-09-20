@@ -27,7 +27,6 @@ export const AppReducer = (state, action) => {
             const reduce_expenses = state.expenses.map((currentExp)=> {
                 if (currentExp.name === action.payload.name && currentExp.cost - action.payload.cost >= 0) {
                     currentExp.cost =  currentExp.cost - action.payload.cost;
-                    budget = state.budget + action.payload.cost
                 }
                 return currentExp
             })
@@ -37,19 +36,14 @@ export const AppReducer = (state, action) => {
                 expenses: [...reduce_expenses],
             };
         case 'DELETE_EXPENSE':
-            console.log('in DELETE_EXPENSE case in reducer')
+            console.log(`in DELETE_EXPENSE case in reducer, payload=${action.payload}`)
             action.type = "DONE";
-            state.expenses.map((currentExp)=> {
-                if (currentExp.name === action.payload) {
-                    budget = state.budget + currentExp.cost
-                    currentExp.cost =  0;
-                }
-                return currentExp
-            })
-            action.type = "DONE";
+            const newExpenses = state.expenses.filter((expense)=> {
+                return expense.name !== action.payload;
+            });
+            state.expenses = newExpenses;
             return {
                 ...state,
-                budget
             };
         case 'SET_BUDGET':
             action.type = "DONE";

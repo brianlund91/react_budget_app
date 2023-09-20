@@ -11,7 +11,7 @@ const ExpenseItem = (props) => {
         
         dispatch({
             type: 'DELETE_EXPENSE',
-            payload: props.id,
+            payload: props.name,
         });
     };
 
@@ -50,9 +50,9 @@ const ExpenseItem = (props) => {
                 <button onClick={decreaseAllocation}>-</button>
             </td>
             <td>
-                <TiDelete size='1.5em' onClick={handleDelete}>
-                    Delete
-                </TiDelete>
+                <button onClick={handleDelete} aria-label={`Delete ${props.name}`}>
+                    <TiDelete size='1.5em'/>
+                </button>
             </td>
         </tr>
     )
